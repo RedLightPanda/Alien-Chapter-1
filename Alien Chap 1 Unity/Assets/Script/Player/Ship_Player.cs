@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Ship_Player : MonoBehaviour
 {
+    #region Variable
     public int maxHealth = 100;
     public int CurrentHealth;
    
@@ -14,6 +15,8 @@ public class Ship_Player : MonoBehaviour
     [SerializeField]
     private float _speed = 3.5f;
 
+    private float _DodgeSpeed = 2.5f;
+
     [SerializeField]
     private GameObject _laserPrefab;
 
@@ -21,11 +24,13 @@ public class Ship_Player : MonoBehaviour
     private float _fireRate = 0.5f;
 
     private float _canFire = -1f;
+    #endregion
 
+    #region Main_Scripts
     // Start is called before the first frame update
     void Start()
     {
-        _SpawnManager = GameObject.Find("Spawning_Manager").GetComponent<SpawnManager>();
+        //_SpawnManager = GameObject.Find("Spawning_Manager").GetComponent<SpawnManager>();
         HealthSystem();
     }
 
@@ -38,7 +43,15 @@ public class Ship_Player : MonoBehaviour
         {
             FireLaser();
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            DodgeRoll();
+        }
     }
+    #endregion
+
+    #region Helper_Code
     void CalculateMovement()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -84,5 +97,18 @@ public class Ship_Player : MonoBehaviour
         healthBar.SetHealth(CurrentHealth);
     }
 
-    
+    void DodgeRoll()
+    {
+        _speed *= _DodgeSpeed;
+        StartCoroutine(DogeRollRemover());
+    }
+
+    IEnumerator DogeRollRemover()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _speed /= _DodgeSpeed;
+    }
+
+    #endregion
+
 }
