@@ -15,7 +15,8 @@ public class Ship_Player : MonoBehaviour
     [SerializeField]
     private float _speed = 3.5f;
 
-    private float _DodgeSpeed = 2.5f;
+    [SerializeField]
+    private float _DodgeRate = 0.5f;
 
     [SerializeField]
     private GameObject _laserPrefab;
@@ -23,7 +24,11 @@ public class Ship_Player : MonoBehaviour
     [SerializeField]
     private float _fireRate = 0.5f;
 
+    private float _DodgeSpeed = 2.5f;
+
     private float _canFire = -1f;
+
+    private float _canDodge = -1f;
     #endregion
 
     #region Main_Scripts
@@ -99,6 +104,7 @@ public class Ship_Player : MonoBehaviour
 
     void DodgeRoll()
     {
+        _canDodge = Time.time + _DodgeRate;
         _speed *= _DodgeSpeed;
         StartCoroutine(DogeRollRemover());
     }
