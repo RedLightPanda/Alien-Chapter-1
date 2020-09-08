@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5543723464542568610}
   - component: {fileID: 6336493681169752437}
   - component: {fileID: 6336493681169752438}
+  - component: {fileID: 3267800}
   m_Layer: 0
   m_Name: ShipPlayer
   m_TagString: Player
@@ -116,3 +117,22 @@ MonoBehaviour:
   _laserPrefab: {fileID: 404292267937764593, guid: 5dcf577e249daed419c2b997f6aa3c71,
     type: 3}
   _fireRate: 0.5
+--- !u!95 &3267800
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6336493681169752439}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: c21245c7f6a161640a4ea7e6afd26c48, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

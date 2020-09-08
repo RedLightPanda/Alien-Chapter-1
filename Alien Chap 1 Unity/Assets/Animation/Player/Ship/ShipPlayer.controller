@@ -11,7 +11,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -2759591424412689162}
-    m_Position: {x: 500, y: -10, z: 0}
+    m_Position: {x: 520, y: 30, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -29,7 +29,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blend Tree
+  m_Name: Movement
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -57,7 +57,13 @@ AnimatorController:
   m_Name: ShipPlayer
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: _speed
+  - m_Name: Horiz
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: Vert
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -95,7 +101,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 5630f380b8efb0f4981a18d29dabd67f, type: 2}
     m_Threshold: 0.25
-    m_Position: {x: -1, y: -1}
+    m_Position: {x: 0, y: -1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
@@ -103,7 +109,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 8d45ef7371b3c53409af44f6ae7c9c68, type: 2}
     m_Threshold: 0.5
-    m_Position: {x: 1, y: -1}
+    m_Position: {x: -1, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
@@ -111,7 +117,7 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: fede7de728a3a9d45a3eb1d6af639193, type: 2}
     m_Threshold: 0.75
-    m_Position: {x: -1, y: 1}
+    m_Position: {x: 1, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
@@ -119,15 +125,15 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 75b1c66d0db626245b40eccb49b2122f, type: 2}
     m_Threshold: 1
-    m_Position: {x: 1, y: 1}
+    m_Position: {x: 0, y: 1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
-  m_BlendParameter: _speed
-  m_BlendParameterY: _speed
+  m_BlendParameter: Horiz
+  m_BlendParameterY: Vert
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
-  m_BlendType: 2
+  m_BlendType: 1

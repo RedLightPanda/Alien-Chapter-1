@@ -8,7 +8,8 @@ public class Ship_Player : MonoBehaviour
     #region Variable
     public int maxHealth = 100;
     public int CurrentHealth;
-   
+    Animator animator;
+
     public UI_Driver_System healthBar;
     private SpawnManager _SpawnManager;
 
@@ -37,6 +38,7 @@ public class Ship_Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         //_SpawnManager = GameObject.Find("Spawning_Manager").GetComponent<SpawnManager>();
         HealthSystem();
     }
@@ -69,6 +71,9 @@ public class Ship_Player : MonoBehaviour
         transform.Translate(direction * _speed * Time.deltaTime);
         
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -8f, 8f), Mathf.Clamp(transform.position.y, -3.5f, 5f), 0);
+
+        animator.SetFloat("Vert", verticalInput);
+        animator.SetFloat("Horiz", horizontalInput);
 
     }
     void FireLaser()
