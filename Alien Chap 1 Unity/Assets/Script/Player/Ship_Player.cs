@@ -24,6 +24,8 @@ public class Ship_Player : MonoBehaviour
     [SerializeField]
     private float _fireRate = 0.5f;
 
+    
+
     private float _DodgeSpeed = 2.5f;
 
     private float _canFire = -1f;
