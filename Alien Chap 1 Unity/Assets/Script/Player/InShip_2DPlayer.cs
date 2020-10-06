@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class InShip_2DPlayer : MonoBehaviour
@@ -12,6 +13,8 @@ public class InShip_2DPlayer : MonoBehaviour
 
     private bool facingRight;
 
+    SpriteRenderer _sprite;
+
     #endregion
 
 
@@ -19,15 +22,13 @@ public class InShip_2DPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        facingRight = true; 
+        _sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
         CalaculateMovement();
-
-        Flip();
     }
 
     #region Helper Code
@@ -38,19 +39,26 @@ public class InShip_2DPlayer : MonoBehaviour
         Vector2 direction = new Vector2(horizontalInput, 0);
 
         transform.Translate(direction * _Speed * Time.deltaTime);
+        
+        if(horizontalInput > 0)
+        {
+            Flip(true);
+        }
+        else if (horizontalInput < 0)
+        {
+            Flip(false);
+        }
     }
 
-    private float Flip (float horizontal)
+    void Flip (bool faceRight)
     {
-        if (horizontal >0 && !facingRight || horizontal < 0 && facingRight)
+        if (faceRight == true)
         {
-            facingRight = !facingRight;
-
-            Vector2 theScale = transform.localScale;
-
-            theScale.x *= -1;
-
-            transform.localScale = theScale;
+            _sprite.flipX = false;
+        }
+        else if(faceRight == false)
+        {
+            _sprite.flipX = true;
         }
     }
 
