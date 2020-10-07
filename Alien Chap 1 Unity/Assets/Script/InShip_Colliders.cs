@@ -9,26 +9,26 @@ public class InShip_Colliders : MonoBehaviour
 
     bool InteractAllowed;
 
-    [SerializeField]
-    private bool LaptopTrigger;
+    //[SerializeField]
+    //private bool LaptopTrigger;
 
-    [SerializeField]
-    private bool SavePointTrigger;
+    //[SerializeField]
+    //private bool SavePointTrigger;
 
-    [SerializeField]
-    private bool NPCTrigger;
+    //[SerializeField]
+    //private bool NPCTrigger;
 
-    [SerializeField]
-    private bool ShipMat;
+    //[SerializeField]
+    //private bool ShipMat;
 
-    [SerializeField]
-    private Text PressE;
+    //[SerializeField]
+    //private Text PressE;
 
-    [SerializeField]
-    private Image DialogueBox;
+    //[SerializeField]
+    //private Image DialogueBox;
 
-    [SerializeField]
-    private RawImage LaptopDesktop;
+    //[SerializeField]
+    //private RawImage LaptopDesktop;
 
     DialogueTrigger dialogue;
 
@@ -37,80 +37,93 @@ public class InShip_Colliders : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PressE.gameObject.SetActive(false);
-        DialogueBox.gameObject.SetActive(false);
-        LaptopDesktop.gameObject.SetActive(false);
-        dialogue = GetComponent<DialogueTrigger>();
-        laptop = GetComponent<Laptop_UI>();
+        //PressE.gameObject.SetActive(false);
+        //DialogueBox.gameObject.SetActive(false);
+        //LaptopDesktop.gameObject.SetActive(false);
+        //dialogue = GetComponent<DialogueTrigger>();
+        //laptop = GetComponent<Laptop_UI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (LaptopTrigger && InteractAllowed && Input.GetKeyDown(KeyCode.E))
+        //if (LaptopTrigger && InteractAllowed && Input.GetKeyDown(KeyCode.E))
+        //{
+        //    Laptop();
+        //}
+
+        //if (SavePointTrigger && InteractAllowed && Input.GetKeyDown(KeyCode.E))
+        //{
+        //    SavePoint();
+        //}
+
+        //if (NPCTrigger && InteractAllowed && Input.GetKeyDown(KeyCode.E))
+        //{
+        //    NPC();
+        //}
+
+        //if (ShipMat && InteractAllowed && Input.GetKeyDown(KeyCode.E))
+        //{
+        //    ShipScreen();
+        //}
+
+        if (InteractAllowed && Input.GetKeyDown(KeyCode.E))
         {
-            Laptop();
+            Test2D();
         }
 
-        if (SavePointTrigger && InteractAllowed && Input.GetKeyDown(KeyCode.E))
-        {
-            SavePoint();
-        }
-
-        if (NPCTrigger && InteractAllowed && Input.GetKeyDown(KeyCode.E))
-        {
-            NPC();
-        }
-
-        if (ShipMat && InteractAllowed && Input.GetKeyDown(KeyCode.E))
-        {
-            ShipScreen();
-        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            PressE.gameObject.SetActive(true);
+            //PressE.gameObject.SetActive(true);
             InteractAllowed = true;
 
         }
 
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            PressE.gameObject.SetActive(false);
+            //PressE.gameObject.SetActive(false);
             InteractAllowed = false;
         }
     }
 
-        void Laptop()
-        {
-        InteractAllowed = false;
-        PressE.gameObject.SetActive(false);
-        LaptopDesktop.gameObject.SetActive(true);
-        }
-    
-        void SavePoint()
-        {
-            Debug.Log("Saved");
-        }
+    //    void Laptop()
+    //    {
+    //    InteractAllowed = false;
+    //    PressE.gameObject.SetActive(false);
+    //    LaptopDesktop.gameObject.SetActive(true);
+    //    }
 
-        void NPC()
-        {
-            InteractAllowed = false;
-            PressE.gameObject.SetActive(false);
-            DialogueBox.gameObject.SetActive(true);
-            dialogue.TriggerDialogue();
-        }
+    //    void SavePoint()
+    //    {
+    //        Debug.Log("Saved");
+    //    }
 
-        void ShipScreen()
-        {
-            Debug.Log("Ship work");
-        }
+    //    void NPC()
+    //    {
+    //        InteractAllowed = false;
+    //        PressE.gameObject.SetActive(false);
+    //        DialogueBox.gameObject.SetActive(true);
+    //        dialogue.TriggerDialogue();
+    //    }
+
+    //    void ShipScreen()
+    //    {
+    //        Debug.Log("Ship work");
+    //    }
+
+
+     void Test2D()
+    {
+        Debug.Log("Ya it's working chef");
+    }
+
 }
 
