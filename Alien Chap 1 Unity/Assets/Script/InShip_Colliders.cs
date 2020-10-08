@@ -30,6 +30,8 @@ public class InShip_Colliders : MonoBehaviour
     //[SerializeField]
     //private RawImage LaptopDesktop;
 
+    public GameObject Door, Player;
+
     DialogueTrigger dialogue;
 
     Laptop_UI laptop;
@@ -83,6 +85,7 @@ public class InShip_Colliders : MonoBehaviour
 
         }
 
+
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -123,6 +126,13 @@ public class InShip_Colliders : MonoBehaviour
      void Test2D()
     {
         Debug.Log("Ya it's working chef");
+        TestDoor();
+    }
+
+    void TestDoor()
+    {
+ 
+        Player.transform.position = new Vector2(Door.transform.position.x, Door.transform.position.y);
     }
 
 }
