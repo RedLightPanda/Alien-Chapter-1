@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
         if (instance && UI == null)
         {
             instance = this;
-            UI = UI_Driver ;
+            //UI = UI_Driver ;
             DontDestroyOnLoad(gameObject);
         }
         else
