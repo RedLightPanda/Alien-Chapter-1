@@ -15,8 +15,8 @@ public class InShip_Colliders : MonoBehaviour
     //[SerializeField]
     //private bool SavePointTrigger;
 
-    //[SerializeField]
-    //private bool NPCTrigger;
+    [SerializeField]
+    private bool NPCTrigger;
 
     //[SerializeField]
     //private bool ShipMat;
@@ -29,6 +29,9 @@ public class InShip_Colliders : MonoBehaviour
 
     //[SerializeField]
     //private RawImage LaptopDesktop;
+
+    [SerializeField]
+    private bool Doors;
 
     public GameObject Door, Player;
 
@@ -59,17 +62,17 @@ public class InShip_Colliders : MonoBehaviour
         //    SavePoint();
         //}
 
-        //if (NPCTrigger && InteractAllowed && Input.GetKeyDown(KeyCode.E))
-        //{
-        //    NPC();
-        //}
+        if (NPCTrigger && InteractAllowed && Input.GetKeyDown(KeyCode.E))
+        {
+            Dialog();
+        }
 
         //if (ShipMat && InteractAllowed && Input.GetKeyDown(KeyCode.E))
         //{
         //    ShipScreen();
         //}
 
-        if (InteractAllowed && Input.GetKeyDown(KeyCode.E))
+        if (Doors && InteractAllowed && Input.GetKeyDown(KeyCode.E))
         {
             Test2D();
         }
@@ -131,8 +134,12 @@ public class InShip_Colliders : MonoBehaviour
 
     void TestDoor()
     {
- 
         Player.transform.position = new Vector2(Door.transform.position.x, Door.transform.position.y);
+    }
+
+    void Dialog()
+    {
+        Debug.Log("Ya Ya I'm talking wee...Now set up the real system dumbass");
     }
 
 }

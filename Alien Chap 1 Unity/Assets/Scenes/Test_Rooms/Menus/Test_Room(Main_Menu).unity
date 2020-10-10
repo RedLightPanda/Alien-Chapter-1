@@ -518,6 +518,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 989681190788044442, guid: c69f347d3353e7c4ea5a91d6cd908cf3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchScreens
+      objectReference: {fileID: 0}
+    - target: {fileID: 989681190788044442, guid: c69f347d3353e7c4ea5a91d6cd908cf3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 989681190788044442, guid: c69f347d3353e7c4ea5a91d6cd908cf3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UI_Screens.UI_Screen_System, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 989681190788044442, guid: c69f347d3353e7c4ea5a91d6cd908cf3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 989681190179086633}
     - target: {fileID: 989681190823992235, guid: c69f347d3353e7c4ea5a91d6cd908cf3,
         type: 3}
       propertyPath: m_Layer
@@ -845,3 +865,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c69f347d3353e7c4ea5a91d6cd908cf3, type: 3}
+--- !u!114 &989681190179086633 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 989681191530407501, guid: c69f347d3353e7c4ea5a91d6cd908cf3,
+    type: 3}
+  m_PrefabInstance: {fileID: 989681190179086632}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a654dc1597a424e8382f1bb4561d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
