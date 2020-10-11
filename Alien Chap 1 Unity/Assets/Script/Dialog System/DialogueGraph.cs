@@ -49,8 +49,11 @@ public class DialogueGraph : EditorWindow
         var fileNameTextField = new TextField(label: "File Name:");
         fileNameTextField.SetValueWithoutNotify(_fileName);
         fileNameTextField.MarkDirtyRepaint();
-        fileNameTextField.RegisterValueChangedCallback(EventType:ChangeEvent<string> => _fileName =EventType.newValue);
+        fileNameTextField.RegisterCallback((EventCallback<ChangeEvent<string>>)(EventType=>_fileName =EventType.newValue));
         toolbar.Add(fileNameTextField);
+
+        toolbar.Add(child: new Button(clickEvent: () => SaveData()) { text = "Save Data" });
+        toolbar.Add(child: new Button(clickEvent: () => LoadData()) { text = "Load Data" });
 
         var nodeCreateButton = new Button( clickEvent: () => { _graphView.CreateNode("Dialogue Node"); });
         nodeCreateButton.text = "Creat Node";
