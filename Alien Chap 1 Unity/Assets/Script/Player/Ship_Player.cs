@@ -98,8 +98,8 @@ public class Ship_Player : MonoBehaviour
 
         if (CurrentHealth == 0)
         {
-            _SpawnManager.OnPlayerDeath();
-           Destroy(this.gameObject);
+             Destroy(this.gameObject);
+            _SpawnManager.OnPlayerDeath();  
         }
     }
 

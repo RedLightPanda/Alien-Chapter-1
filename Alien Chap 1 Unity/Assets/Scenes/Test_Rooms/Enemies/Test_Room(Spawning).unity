@@ -164,8 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8475d921b1a0b5a4d96ce11af7ffc95b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 7691973295197997221, guid: b78af83346d43514b87800865f47ef20,
-    type: 3}
+  _enemyPrefab:
+  - {fileID: 7691973295197997221, guid: b78af83346d43514b87800865f47ef20, type: 3}
+  - {fileID: 7691973295197997221, guid: c155b3f138c11e94db1239d77e318b66, type: 3}
+  - {fileID: 7691973295197997221, guid: 1040af1d18d14bf419cb4ce4a7955acb, type: 3}
   _enemyContainer: {fileID: 2138734482}
 --- !u!4 &191856510
 Transform:

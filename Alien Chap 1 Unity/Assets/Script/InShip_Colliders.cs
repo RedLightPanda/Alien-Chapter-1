@@ -9,27 +9,9 @@ public class InShip_Colliders : MonoBehaviour
 
     bool InteractAllowed;
 
-    //[SerializeField]
-    //private bool LaptopTrigger;
-
-    //[SerializeField]
-    //private bool SavePointTrigger;
-
     [SerializeField]
     private bool NPCTrigger;
-
-    //[SerializeField]
-    //private bool ShipMat;
-
-    //[SerializeField]
-    //private Text PressE;
-
-    //[SerializeField]
-    //private Image DialogueBox;
-
-    //[SerializeField]
-    //private RawImage LaptopDesktop;
-
+  
     [SerializeField]
     private bool Doors;
 
@@ -42,37 +24,19 @@ public class InShip_Colliders : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //PressE.gameObject.SetActive(false);
-        //DialogueBox.gameObject.SetActive(false);
-        //LaptopDesktop.gameObject.SetActive(false);
-        //dialogue = GetComponent<DialogueTrigger>();
-        //laptop = GetComponent<Laptop_UI>();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (LaptopTrigger && InteractAllowed && Input.GetKeyDown(KeyCode.E))
-        //{
-        //    Laptop();
-        //}
-
-        //if (SavePointTrigger && InteractAllowed && Input.GetKeyDown(KeyCode.E))
-        //{
-        //    SavePoint();
-        //}
-
-        if (NPCTrigger && InteractAllowed && Input.GetKeyDown(KeyCode.E))
+       
+        if (NPCTrigger && InteractAllowed && Input.GetKeyDown(KeyCode.Space))
         {
             Dialog();
         }
 
-        //if (ShipMat && InteractAllowed && Input.GetKeyDown(KeyCode.E))
-        //{
-        //    ShipScreen();
-        //}
-
-        if (Doors && InteractAllowed && Input.GetKeyDown(KeyCode.E))
+        if (Doors && InteractAllowed && Input.GetKeyDown(KeyCode.Space))
         {
             Test2D();
         }
@@ -83,9 +47,7 @@ public class InShip_Colliders : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            //PressE.gameObject.SetActive(true);
             InteractAllowed = true;
-
         }
 
 
@@ -95,38 +57,11 @@ public class InShip_Colliders : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            //PressE.gameObject.SetActive(false);
             InteractAllowed = false;
         }
     }
 
-    //    void Laptop()
-    //    {
-    //    InteractAllowed = false;
-    //    PressE.gameObject.SetActive(false);
-    //    LaptopDesktop.gameObject.SetActive(true);
-    //    }
-
-    //    void SavePoint()
-    //    {
-    //        Debug.Log("Saved");
-    //    }
-
-    //    void NPC()
-    //    {
-    //        InteractAllowed = false;
-    //        PressE.gameObject.SetActive(false);
-    //        DialogueBox.gameObject.SetActive(true);
-    //        dialogue.TriggerDialogue();
-    //    }
-
-    //    void ShipScreen()
-    //    {
-    //        Debug.Log("Ship work");
-    //    }
-
-
-     void Test2D()
+       void Test2D()
     {
         Debug.Log("Ya it's working chef");
         TestDoor();
