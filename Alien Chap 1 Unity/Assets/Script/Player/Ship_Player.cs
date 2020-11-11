@@ -10,9 +10,9 @@ public class Ship_Player : MonoBehaviour
     public int CurrentHealth;
     Animator animator;
 
-    public UI_Driver_System healthBar;
+    public Ship_UI healthBar;
     private SpawnManager _SpawnManager;
-
+    
     [SerializeField]
     private float _speed = 3.5f;
 
@@ -20,18 +20,19 @@ public class Ship_Player : MonoBehaviour
     private float _DodgeRate = 0.5f;
 
     [SerializeField]
-    private GameObject _laserPrefab;
+    private GameObject _laserPrefab,Missles,chargeFire,Sheild;
 
     [SerializeField]
     private float _fireRate = 0.5f;
-
-    
 
     private float _DodgeSpeed = 2.5f;
 
     private float _canFire = -1f;
 
     private float _canDodge = -1f;
+    
+    [SerializeField]
+    private bool _Sheild = false;
     #endregion
 
     #region Main_Scripts
@@ -53,7 +54,12 @@ public class Ship_Player : MonoBehaviour
             FireLaser();
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            SecondFire();
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time > _canDodge)
         {
             DodgeRoll();
         }
@@ -82,6 +88,12 @@ public class Ship_Player : MonoBehaviour
         Instantiate(_laserPrefab, transform.position + new Vector3(0, 0, 1f), Quaternion.identity);
     }
 
+    void SecondFire()
+    {
+        Debug.Log("Second weapon fired");
+        Shell();
+    }
+
 
     //When player gets hit player takes damage.
     //If HP is zero Player dies.
@@ -94,6 +106,12 @@ public class Ship_Player : MonoBehaviour
 
     public void Damage()
     {
+        if (_Sheild == true)
+        {
+            _Sheild = false;
+            Sheild.SetActive(false);
+            return;
+        }
         TakeDamage(10);
 
         if (CurrentHealth == 0)
@@ -114,6 +132,13 @@ public class Ship_Player : MonoBehaviour
         _canDodge = Time.time + _DodgeRate;
         _speed *= _DodgeSpeed;
         StartCoroutine(DogeRollRemover());
+    }
+
+    public void Shell()
+    {
+        _Sheild = true;
+        Sheild.SetActive(true);
+
     }
 
     IEnumerator DogeRollRemover()
