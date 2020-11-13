@@ -8,6 +8,9 @@ public class Ship_UI : MonoBehaviour
     //HP Bar
     public Slider slider;
 
+    //Charge counter
+    public Slider charge;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,5 +32,16 @@ public class Ship_UI : MonoBehaviour
     public void SetHealth(int Health)
     {
         slider.value = Health;
+    }
+
+    public void SetMaxCharge(int Charge)
+    {
+        slider.maxValue = Charge;
+        slider.value = Charge;
+    }
+
+    public void SetCharge (int Charge)
+    {
+        slider.value = Charge;
     }
 }

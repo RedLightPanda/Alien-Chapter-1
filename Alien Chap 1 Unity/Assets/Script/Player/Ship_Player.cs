@@ -8,9 +8,12 @@ public class Ship_Player : MonoBehaviour
     #region Variable
     public int maxHealth = 100;
     public int CurrentHealth;
+    public int SubCharge = 3;
+    public int CurrentCharge;
     Animator animator;
 
     public Ship_UI healthBar;
+    public Ship_UI chargeBar;
     private SpawnManager _SpawnManager;
     
     [SerializeField]
@@ -42,6 +45,7 @@ public class Ship_Player : MonoBehaviour
         animator = GetComponent<Animator>();
         //_SpawnManager = GameObject.Find("Spawning_Manager").GetComponent<SpawnManager>();
         HealthSystem();
+        ChargeSystem();
     }
 
     // Update is called once per frame
@@ -104,6 +108,12 @@ public class Ship_Player : MonoBehaviour
         healthBar.SetHealth(CurrentHealth);
     }
 
+    void ChargeSystem()
+    {
+        CurrentCharge = 3;
+        chargeBar.SetCharge(CurrentCharge);
+    }
+
     public void Damage()
     {
         if (_Sheild == true)
@@ -119,6 +129,21 @@ public class Ship_Player : MonoBehaviour
              Destroy(this.gameObject);
             _SpawnManager.OnPlayerDeath();  
         }
+    }
+
+    public void Altguns()
+    {
+        if (_Sheild == true)
+        {
+            LoseCharge(1);
+        }
+
+        if (CurrentCharge == 0)
+        {
+            _Sheild = false;
+            Sheild.SetActive(false);
+        }
+        
     }
 
     void TakeDamage(int Health)
@@ -138,7 +163,13 @@ public class Ship_Player : MonoBehaviour
     {
         _Sheild = true;
         Sheild.SetActive(true);
+        Altguns();
+    }
 
+    void LoseCharge (int Charage)
+    {
+        CurrentCharge -= Charage;
+        chargeBar.SetCharge(CurrentCharge);
     }
 
     IEnumerator DogeRollRemover()
