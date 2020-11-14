@@ -36,12 +36,12 @@ public class Ship_UI : MonoBehaviour
 
     public void SetMaxCharge(int Charge)
     {
-        slider.maxValue = Charge;
-        slider.value = Charge;
+        charge.maxValue = Charge;
+        charge.value = Charge;
     }
 
     public void SetCharge (int Charge)
     {
-        slider.value = Charge;
+        charge.value = Charge;
     }
 }

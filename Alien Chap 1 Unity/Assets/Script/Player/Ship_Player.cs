@@ -138,7 +138,7 @@ public class Ship_Player : MonoBehaviour
             LoseCharge(1);
         }
 
-        if (CurrentCharge == 0)
+        if (CurrentCharge < 0)
         {
             _Sheild = false;
             Sheild.SetActive(false);
