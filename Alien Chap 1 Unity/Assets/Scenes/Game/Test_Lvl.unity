@@ -1146,6 +1146,11 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 402431000}
+    - target: {fileID: 6336493681169752438, guid: 6bac453165c22264b92856b6c0d7177e,
+        type: 3}
+      propertyPath: chargeBar
+      value: 
+      objectReference: {fileID: 402431000}
     - target: {fileID: 6336493681169752439, guid: 6bac453165c22264b92856b6c0d7177e,
         type: 3}
       propertyPath: m_Name
