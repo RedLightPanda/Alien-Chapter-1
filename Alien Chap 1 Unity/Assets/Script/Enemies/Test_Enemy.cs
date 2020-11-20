@@ -49,6 +49,8 @@ public class Test_Enemy : MonoBehaviour
             {
                player.Damage();
             }
+
+            Destroy(this.gameObject);
         }  
         
         if (other.gameObject.tag == "Laser")

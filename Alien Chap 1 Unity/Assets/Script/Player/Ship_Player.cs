@@ -8,11 +8,14 @@ public class Ship_Player : MonoBehaviour
     #region Variable
     public int maxHealth = 100;
     public int CurrentHealth;
+    public int SubCharge = 3;
+    public int CurrentCharge;
     Animator animator;
 
-    public UI_Driver_System healthBar;
+    public Ship_UI healthBar;
+    public Ship_UI chargeBar;
     private SpawnManager _SpawnManager;
-
+    
     [SerializeField]
     private float _speed = 3.5f;
 
@@ -20,18 +23,19 @@ public class Ship_Player : MonoBehaviour
     private float _DodgeRate = 0.5f;
 
     [SerializeField]
-    private GameObject _laserPrefab;
+    private GameObject _laserPrefab,Missles,chargeFire,Sheild;
 
     [SerializeField]
     private float _fireRate = 0.5f;
-
-    
 
     private float _DodgeSpeed = 2.5f;
 
     private float _canFire = -1f;
 
     private float _canDodge = -1f;
+    
+    [SerializeField]
+    private bool _Sheild = false;
     #endregion
 
     #region Main_Scripts
@@ -41,6 +45,7 @@ public class Ship_Player : MonoBehaviour
         animator = GetComponent<Animator>();
         //_SpawnManager = GameObject.Find("Spawning_Manager").GetComponent<SpawnManager>();
         HealthSystem();
+        ChargeSystem();
     }
 
     // Update is called once per frame
@@ -53,7 +58,12 @@ public class Ship_Player : MonoBehaviour
             FireLaser();
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            SecondFire();
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time > _canDodge)
         {
             DodgeRoll();
         }
@@ -82,6 +92,12 @@ public class Ship_Player : MonoBehaviour
         Instantiate(_laserPrefab, transform.position + new Vector3(0, 0, 1f), Quaternion.identity);
     }
 
+    void SecondFire()
+    {
+        Debug.Log("Second weapon fired");
+        Shell();
+    }
+
 
     //When player gets hit player takes damage.
     //If HP is zero Player dies.
@@ -92,15 +108,42 @@ public class Ship_Player : MonoBehaviour
         healthBar.SetHealth(CurrentHealth);
     }
 
+    void ChargeSystem()
+    {
+        CurrentCharge = 3;
+        chargeBar.SetCharge(CurrentCharge);
+    }
+
     public void Damage()
     {
+        if (_Sheild == true)
+        {
+            _Sheild = false;
+            Sheild.SetActive(false);
+            return;
+        }
         TakeDamage(10);
 
         if (CurrentHealth == 0)
         {
-            _SpawnManager.OnPlayerDeath();
-           Destroy(this.gameObject);
+             Destroy(this.gameObject);
+            _SpawnManager.OnPlayerDeath();  
         }
+    }
+
+    public void Altguns()
+    {
+        if (_Sheild == true)
+        {
+            LoseCharge(1);
+        }
+
+        if (CurrentCharge < 0)
+        {
+            _Sheild = false;
+            Sheild.SetActive(false);
+        }
+        
     }
 
     void TakeDamage(int Health)
@@ -114,6 +157,19 @@ public class Ship_Player : MonoBehaviour
         _canDodge = Time.time + _DodgeRate;
         _speed *= _DodgeSpeed;
         StartCoroutine(DogeRollRemover());
+    }
+
+    public void Shell()
+    {
+        _Sheild = true;
+        Sheild.SetActive(true);
+        Altguns();
+    }
+
+    void LoseCharge (int Charage)
+    {
+        CurrentCharge -= Charage;
+        chargeBar.SetCharge(CurrentCharge);
     }
 
     IEnumerator DogeRollRemover()

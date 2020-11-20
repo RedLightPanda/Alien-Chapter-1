@@ -1005,5 +1005,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'EnemyShip1 '
       objectReference: {fileID: 0}
+    - target: {fileID: 7691973295197997221, guid: b78af83346d43514b87800865f47ef20,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b78af83346d43514b87800865f47ef20, type: 3}
