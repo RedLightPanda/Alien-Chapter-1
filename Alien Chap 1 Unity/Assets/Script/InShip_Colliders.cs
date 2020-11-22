@@ -19,7 +19,7 @@ public class InShip_Colliders : MonoBehaviour
 
     DialogueTrigger dialogue;
 
-    Laptop_UI laptop;
+
 
     // Start is called before the first frame update
     void Start()
