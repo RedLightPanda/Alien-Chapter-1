@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Ship_UI : MonoBehaviour
 {
     //HP Bar
-    public Slider slider;
+    public Slider health;
 
     //Charge counter
     public Slider charge;
@@ -25,13 +25,13 @@ public class Ship_UI : MonoBehaviour
 
     public void SetMaxHealth(int Health)
     {
-        slider.maxValue = Health;
-        slider.value = Health;
+        health.maxValue = Health;
+        health.value = Health;
     }
 
     public void SetHealth(int Health)
     {
-        slider.value = Health;
+        health.value = Health;
     }
 
     public void SetMaxCharge(int Charge)
